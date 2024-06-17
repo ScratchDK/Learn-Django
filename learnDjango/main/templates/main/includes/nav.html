@@ -1,0 +1,8 @@
+{% load main_tags %}
+
+{% get_category as category %}
+<nav class="nav">
+  {% for el in category %}
+    <a href="{% url 'category' el.id %}">{{ el.name }}</a>
+  {% endfor %}
+</nav>

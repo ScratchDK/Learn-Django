@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Авторизация</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{{ next }}"/>
+<!--    Параметр next нужен чтобы вернуться на туже страницу с которой перешел на авторизацию-->
+    <div class="form-error">{{ form.non_field_errors }}</div>
+    <div class="auth">
+        {% for i in form %}
+            <p><label class="form-label" for="{{ i.id_for_label }}">{{ i.label }}</label>{{ i }}</p>
+        {% endfor %}
+    </div>
+    <div id="button-auth">
+        <p><button type="submit">Войти</button></p>
+    </div>
+</form>
+{% endblock %}

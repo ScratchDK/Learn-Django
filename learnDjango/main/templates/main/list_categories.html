@@ -1,0 +1,44 @@
+<!--<ul>-->
+<!--  {% for el in categories_list_categories %}-->
+<!--    {% if el.id == cat_selected_list_categories %}-->
+<!--      <li><a href="{% url 'category' el.id %}" class="selected">{{ el.name }}</a></li>-->
+<!--    {% else %}-->
+<!--      <li><a href="{{ el.get_absolute_url }}">{{ el.name }}</a></li>-->
+<!--    {% endif %}-->
+<!--  {% endfor %}-->
+<!--</ul>-->
+
+
+{% for category in categories_list_categories %}
+  {% if category.slug == 'games' %}
+    <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a>
+        <select onchange="window.location.href = this.options[this.selectedIndex].value" name="category" id="category">
+          <option value=""></option>
+          {% for platform in platform_list_categories %}
+            {% if category.id == platform.cat_id %}
+              <option value="{{ platform.get_absolute_url }}">{{ platform.name }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+      </li>
+  {% else %}
+    <li><a href="{{ category.get_absolute_url }}">{{ category.name }}</a></li>
+  {% endif %}
+{% endfor %}
+
+
+<style>
+  select:focus {
+    outline: none;
+}
+</style>
+
+<!--<ul>-->
+<!--  {% for el in platform_list_categories %}-->
+<!--    {% if el.id == platform_selected_list_categories %}-->
+<!--      <li><a href="{% url 'platform' el.id %}" class="selected">{{ el.name }}</a></li>-->
+<!--    {% else %}-->
+<!--      <li><a href="{{ el.get_absolute_url }}">{{ el.name }}</a></li>-->
+<!--    {% endif %}-->
+<!--  {% endfor %}-->
+<!--</ul>-->

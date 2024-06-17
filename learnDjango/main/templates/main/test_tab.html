@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Вкладки</title>
+  <link rel="stylesheet" href="{% static 'main/css/test_tab.css' %}">
+ </head>
+ <body>
+  <div class="tabs">
+   {% for i in posts %}
+    <div class="tab">
+     <input type="radio" id="tab1" name="tab-group" checked>
+     <label for="tab1" class="tab-title">{{i.title}}</label>
+     <section class="tab-content">{{i.text}}</section>
+    </div>
+    <div class="tab">
+     <input type="radio" id="tab2" name="tab-group">
+     <label for="tab2" class="tab-title">Вкладка 2</label>
+     <section class="tab-content">Два</section>
+    </div>
+    <div class="tab">
+     <input type="radio" id="tab3" name="tab-group">
+     <label for="tab3" class="tab-title">Вкладка 3</label>
+     <section class="tab-content">Три</section>
+    </div>
+   {% endfor %}
+  </div>
+ </body>
+</html>

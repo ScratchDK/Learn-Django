@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load main_tags %}
+
+{% block content %}
+    <!--    <h1>{{ title | cut:" "}}</h1>-->
+    <!--    <p>{{ menu | join:" | " }}</p>-->
+    <!--    {% include 'main/includes/nav.html' %}-->
+
+    <h2 class="title_platform">{{main_title}}</h2>
+
+    {% for el in articles %}
+        {% if el.is_publising == True %}
+            <div class="article"><div class="article-panel">
+                {% if not el.platform %}
+                    <p class="first">Категория:{{ el.cat }}</p>
+                    <p class="last">{{ el.data_update|date:"d-m-Y H:i:s" }}</p>
+                {% else %}
+                    <p class="first">Категория:{{ el.cat }}<br>Платформа:{{el.platform}}</p>
+                    <p class="last">{{ el.data_update|date:"d-m-Y H:i:s" }}</p>
+                {% endif %}
+            </div>
+                <h3>{{ el.title }}</h3>
+                {% autoescape off %}
+                <p>{{ el.text|linebreaks|truncatewords:50 }}</p>
+                {% endautoescape %}
+                <p><a href="{{ el.get_absolute_url }}">читать далее</a></p>
+                {% if not forloop.last %}
+                {% endif %}
+            </div>
+<!--                <hr> горизонтальная линия-->
+        {% endif %}
+    {% endfor %}
+
+    <!--    {% include 'main/includes/nav.html' %}-->
+    <!--    <p>{{ float | add:"50"| divisibleby:"2" }}</p>-->
+    <!--    <p>{{ list | join:" | " }}</p>-->
+    <!--    <p>{{ class }}</p>-->
+    <!--    <p>{{ set | length }}</p>-->
+    <!--    <p>{{ dict }}</p>-->
+    <!--    <p>{{ slug }}</p>-->
+{% endblock %}
+{% block nav %}
+    <h4 class="cat">Категории</h4>
+    {% show_category_list_categories cat_selected_list_categories %}
+{% endblock %}
+{% block ad %}
+    {% show_all_tags %}
+{% endblock %}
+<!--    Платформы сейчас не требуются потому что мы выводим их в выпадающем списке категорий-->
+<!--    <h4>Платформы</h4>-->
+<!--    {% show_platform_list_categories platform_selected_list_categories %}-->

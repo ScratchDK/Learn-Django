@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="article">
+        <div class="breadcrumbs">
+            {% with post.tags.all as tags %}
+            {% if tags %}
+            {% for i in tags %}
+                <a href="{{ i.get_absolute_url }}" class="tags">#{{ i.tag }} &nbsp</a>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+        <h1>{{ title }}</h1>
+        {% if post.photo %}
+            <p><img class="img_article_left" src="{{ post.photo.url }}" alt=""></p>
+        {% endif %}
+
+        {{ post.text|linebreaks }}
+    </div>
+{% endblock %}

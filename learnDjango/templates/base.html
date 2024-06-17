@@ -1,0 +1,45 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ main_title | default:"Без заголовка" }}</title>
+    <link rel="stylesheet" href="{% static 'main/css/base.css' %}">
+</head>
+<body class="grid-container">
+    <div id="header" class="grid-header flex-header">
+        <h1 class="title">What The F World</h1>
+    </div>
+    <div id="menu" class="grid-navbar flex-navbar">
+        <div class="flex-nav">
+            <h2 class="nav">Навигация</h2>
+            <ul class="flex-ul">
+                <li><a href="{% url 'home' %}">На главную</a></li>
+                {% for i in menu_dict %}
+                {% if not forloop.last %}<li>{% else %}<li class="last">{% endif %}
+                    <a href="{% url i.url_name %}">{{i.title}}</a>
+                </li>
+                {% endfor %}
+                <li>
+                    {% block nav %}
+                    {% endblock %}
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    <div id="ad" class="grid-sidebar">
+        <div class="flex-sidebar">
+            {% block ad %}
+            {% endblock %}
+        </div>
+    </div>
+    <div id="main" class="grid-main">
+        <div class="flex-main">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+</html>

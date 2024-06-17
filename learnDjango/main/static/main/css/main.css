@@ -1,0 +1,134 @@
+html {
+    font-size: calc(2px + 1vw);
+}
+
+
+body {
+    background: #F4A260;
+    font-family: Verdana;
+}
+
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    grid-template-areas: "sidebar main";
+    height: 100vh;
+}
+
+
+.grid-side {
+    grid-area: sidebar;
+    background: linear-gradient(210deg, brown, saddlebrown, Sienna, Peru, sandybrown);
+    border-right: 5px solid black;
+}
+
+.flex-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: whitesmoke;
+    padding: 5px;
+}
+
+.logo_sud {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-shadow: 1px 1px 2px black;
+    padding-top: 30px;
+}
+
+aside img {
+    width: calc(10px + 5vw);
+}
+
+aside .logo {
+    font-weight: bold;
+}
+
+.nav_conteiner {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+}
+
+aside h3 {
+    margin-top: 50px;
+}
+
+aside ul {
+    list-style: none;
+}
+
+aside ul li {
+    color: white;
+    display: block;
+    margin-top: 5px;
+    transition: transform .6s ease;
+}
+
+aside ul li:hover, aside ul a:hover {
+    color: cornflowerblue;
+    text-decoration: none;
+    transform: scale(1.1);
+}
+
+.btn-info {
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    background: linear-gradient(225deg, blue, cornflowerblue, cadetblue);
+}
+
+
+.grid-main {
+    grid-area: main;
+    overflow-y: scroll;
+}
+
+.flex-main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.btn-success {
+    color: whitesmoke;
+    text-shadow: 1px 1px 2px black;
+    background: linear-gradient(225deg, green, forestgreen, lightgreen);
+}
+
+.features {
+    margin-top: 50px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+main .features  p {
+    margin: 20px auto;
+}
+
+.alert-warning {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    clear: both;
+    margin: 10px 0%;
+    text-align: center;
+}
+
+.alert-warning table, td, th {
+    border: 3px solid saddlebrown;
+}
+
+.alert-warning td, th {
+    padding: 5px 10px;
+    text-align: center;
+}

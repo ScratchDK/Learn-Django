@@ -1,0 +1,5 @@
+<div class="tag-panel">
+    {% for i in tags %}
+        <a href="{{ i.get_absolute_url }}" class="tags">#{{ i.tag }} &nbsp</a>
+    {% endfor %}
+</div>
